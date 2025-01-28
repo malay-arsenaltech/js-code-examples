@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Introduction to React</title>
+</head>
+<body>
+    <h1>Introduction to React</h1>
+    <p>React is a JavaScript library for building user interfaces, particularly single-page applications where efficiency and responsiveness are critical.</p>
+    <h2>Why Use React?</h2>
+    <ul>
+        <li>Component-Based Architecture: Build reusable and independent components.</li>
+        <li>Virtual DOM: Efficient updates and rendering.</li>
+        <li>State Management: Simplifies handling data flow within components.</li>
+    </ul>
+    <h2>Basic Example</h2>
+    <pre>
+        <code>
+// Example: Simple Counter App
+import React, { useState } from 'react';
+
+function Counter() {
+    const [count, setCount] = useState(0);
+    return (
+        <div>
+            <p>Count: {count}</p>
+            <button onClick={() => setCount(count + 1)}>Increment</button>
+        </div>
+    );
+}
+
+export default Counter;
+        </code>
+    </pre>
+    <h2>Advanced Features</h2>
+    <h3>Using Props and Context</h3>
+    <pre>
+        <code>
+// Example: Context for Theme Management
+import React, { createContext, useContext, useState } from 'react';
+
+const ThemeContext = createContext();
+
+function ThemeProvider({ children }) {
+    const [theme, setTheme] = useState('light');
+    return (
+        <ThemeContext.Provider value={{ theme, setTheme }}>
+            {children}
+        </ThemeContext.Provider>
+    );
+}
+
+function ThemedComponent() {
+    const { theme, setTheme } = useContext(ThemeContext);
+    return (
+        <div style={{ background: theme === 'light' ? '#fff' : '#333', color: theme === 'light' ? '#000' : '#fff' }}>
+            <p>Current Theme: {theme}</p>
+            <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>Toggle Theme</button>
+        </div>
+    );
+}
+
+function App() {
+    return (
+        <ThemeProvider>
+            <ThemedComponent />
+        </ThemeProvider>
+    );
+}
+
+export default App;
+        </code>
+    </pre>
+</body>
+</html>

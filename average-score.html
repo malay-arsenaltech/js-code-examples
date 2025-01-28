@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Average Score</title>
+  </head>
+  <body>
+    <h1>Calculate Average Score</h1>
+    <p>Open the console to see the result.</p>
+    <span id="averageScore"></span>
+    <script type="text/javascript">
+      const students = [
+        { name: "Alice", score: 85 },
+        { name: "Bob", score: 92 },
+        { name: "Charlie", score: 88 },
+      ];
+      const average =
+        students.reduce((sum, student) => sum + student.score, 0) /
+        students.length;
+      document
+        .getElementById("averageScore")
+        .innerHTML(`Average Score: ${average}`);
+    </script>
+  </body>
+</html>
